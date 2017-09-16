@@ -1,0 +1,23 @@
+{
+    "name": "amphp/website-tools",
+    "description": "Website tools for amphp.org.",
+    "type": "project",
+    "require": {
+        "amphp/amp": "^2.0",
+        "amphp/artax": "^3.0",
+        "kelunik/oauth-cli": "^1.0",
+        "kelunik/link-header-rfc5988": "^1.0"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Niklas Keller",
+            "email": "me@kelunik.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Amp\\WebsiteTools\\": "src"
+        }
+    }
+}
