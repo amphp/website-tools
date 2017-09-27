@@ -29,9 +29,9 @@ Loop::run(function () use ($clientId, $clientSecret) {
 
     $githubClient = new GitHubClient($oauthToken, $httpClient);
 
-    $reference = yield $githubClient->getHead("amphp/website-shared", "master");
+    $reference = yield $githubClient->getHead("amphp/amphp.github.io", "master");
 
-    yield $stdout->write("amphp/website-shared is at {$reference}\r\n");
+    yield $stdout->write("amphp/amphp.github.io is at {$reference}\r\n");
     yield $stdout->write("Do you want to update all repositories to that reference? [y/N]: ");
     $answer = yield $stdin->read();
 
