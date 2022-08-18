@@ -1,13 +1,12 @@
 #!/usr/bin/env php
 <?php
 
-use Amp\Artax\Client;
-use Amp\Artax\DefaultClient;
-use Amp\ByteStream\ResourceInputStream;
-use Amp\ByteStream\ResourceOutputStream;
-use Amp\Loop;
+use Amp\ByteStream\ReadableResourceStream;
+use Amp\ByteStream\WritableResourceStream;
+use Amp\Http\Client\HttpClientBuilder;
+use Amp\Http\Client\Interceptor\AddRequestHeader;
 use Amp\WebsiteTools\GitHubClient;
-use Kelunik\OAuth\Providers\GitHub;
+use Kelunik\OAuth\Providers\GitHubProvider;
 use function Kelunik\OAuthCli\authenticate;
 
 require __DIR__ . "/../vendor/autoload.php";
@@ -15,79 +14,75 @@ require __DIR__ . "/../vendor/autoload.php";
 $clientId = getenv("AMPHP_GITHUB_SYNC_APP_ID");
 $clientSecret = getenv("AMPHP_GITHUB_SYNC_APP_SECRET");
 
-Loop::run(function () use ($clientId, $clientSecret) {
-    $stdin = new ResourceInputStream(STDIN);
-    $stdout = new ResourceOutputStream(STDOUT);
+$stdin = new ReadableResourceStream(STDIN);
+$stdout = new WritableResourceStream(STDOUT);
 
-    $httpClient = new DefaultClient;
-    $httpClient->setOption(Client::OP_DEFAULT_HEADERS, [
-        "user-agent" => "amphp/website-tools",
-    ]);
+$httpClient = (new HttpClientBuilder)
+    ->intercept(new AddRequestHeader('user-agent', 'amphp/website-tools'))
+    ->build();
 
-    $github = new GitHub($httpClient, "http://127.0.0.1:1337/oauth", $clientId, $clientSecret, ["repo"]);
-    $oauthToken = yield authenticate($github);
+$github = new GitHubProvider($httpClient, "http://127.0.0.1:1337/oauth", $clientId, $clientSecret, ["repo"]);
+$oauthToken = authenticate($github);
 
-    $githubClient = new GitHubClient($oauthToken, $httpClient);
+$githubClient = new GitHubClient($oauthToken, $httpClient);
 
-    $reference = yield $githubClient->getHead("amphp/amphp.github.io", "master");
+$reference = $githubClient->getHead("amphp/amphp.github.io", "master");
 
-    yield $stdout->write("amphp/amphp.github.io is at {$reference}\r\n");
-    yield $stdout->write("Do you want to update all repositories to that reference? [y/N]: ");
-    $answer = yield $stdin->read();
+$stdout->write("amphp/amphp.github.io is at {$reference}\r\n");
+$stdout->write("Do you want to update all repositories to that reference? [y/N]: ");
+$answer = $stdin->read();
 
-    if (trim($answer) !== "y") {
-        exit(0);
-    }
+if (trim($answer) !== "y") {
+    exit(0);
+}
 
-    $repositories = $githubClient->getRepositories("amphp");
+$repositories = $githubClient->getRepositories("amphp");
 
-    while (yield $repositories->advance()) {
-        $repository = $repositories->getCurrent();
-        $repository = $repository["full_name"];
+foreach ($repositories as $repository) {
+    $repository = $repository["full_name"];
 
-        $currentVersion = yield $githubClient->getSubmoduleVersion($repository, "docs/.shared");
+    $currentVersion = $githubClient->getSubmoduleVersion($repository, "docs/.shared");
 
-        if ($currentVersion !== null && $currentVersion !== $reference) {
-            $stdout->write("{$repository} is not up-to-date, should I update it? [Y/n]: ");
+    if ($currentVersion !== null && $currentVersion !== $reference) {
+        $stdout->write("{$repository} is not up-to-date, should I update it? [Y/n]: ");
 
-            $answer = trim(yield $stdin->read());
+        $answer = trim($stdin->read());
 
-            if ($answer !== "y" && $answer !== "") {
-                exit(0);
-            }
+        if ($answer !== "y" && $answer !== "") {
+            exit(0);
+        }
 
-            $master = yield $githubClient->getHead($repository, "master");
-            $baseTree = yield $githubClient->getCommitTree($repository, $master);
-            $baseTree = yield $githubClient->getTree($repository, $baseTree);
+        $master = $githubClient->getHead($repository, "master");
+        $baseTree = $githubClient->getCommitTree($repository, $master);
+        $baseTree = $githubClient->getTree($repository, $baseTree);
 
-            foreach ($baseTree["tree"] as $baseTreeKey => $baseTreeChild) {
-                if ($baseTreeChild["path"] === "docs") {
-                    $docsTree = yield $githubClient->getTree($repository, $baseTreeChild["sha"]);
+        foreach ($baseTree["tree"] as $baseTreeKey => $baseTreeChild) {
+            if ($baseTreeChild["path"] === "docs") {
+                $docsTree = $githubClient->getTree($repository, $baseTreeChild["sha"]);
 
-                    foreach ($docsTree["tree"] as $docsTreeKey => $docsTreeChild) {
-                        if ($docsTreeChild["path"] === ".shared") {
-                            $docsTree["tree"][$docsTreeKey]["sha"] = $reference;
-                        }
+                foreach ($docsTree["tree"] as $docsTreeKey => $docsTreeChild) {
+                    if ($docsTreeChild["path"] === ".shared") {
+                        $docsTree["tree"][$docsTreeKey]["sha"] = $reference;
                     }
-
-                    $docsTree = yield $githubClient->createTree($repository, $docsTree["sha"], $docsTree["tree"]);
-                    $baseTree["tree"][$baseTreeKey]["sha"] = $docsTree["sha"];
                 }
+
+                $docsTree = $githubClient->createTree($repository, $docsTree["sha"], $docsTree["tree"]);
+                $baseTree["tree"][$baseTreeKey]["sha"] = $docsTree["sha"];
             }
+        }
 
-            $newTree = yield $githubClient->createTree($repository, $baseTree["sha"], $baseTree["tree"]);
+        $newTree = $githubClient->createTree($repository, $baseTree["sha"], $baseTree["tree"]);
 
-            $commitMessage = <<<MESSAGE
+        $commitMessage = <<<MESSAGE
 Update shared documentation files
 
 This is an automated commit. Please report any issues to https://github.com/amphp/website-tools.
 MESSAGE;
 
-            $commit = yield $githubClient->createCommit($repository, $commitMessage, $newTree["sha"], [$master]);
-            yield $stdout->write("Created {$commit["sha"]} in {$repository}.\r\n");
+        $commit = $githubClient->createCommit($repository, $commitMessage, $newTree["sha"], [$master]);
+        $stdout->write("Created {$commit["sha"]} in {$repository}.\r\n");
 
-            $ref = yield $githubClient->updateHead($repository, "master", $commit["sha"]);
-            yield $stdout->write("Updated {$ref["ref"]} in {$repository} to {$commit["sha"]}.\r\n");
-        }
+        $ref = $githubClient->updateHead($repository, "master", $commit["sha"]);
+        $stdout->write("Updated {$ref["ref"]} in {$repository} to {$commit["sha"]}.\r\n");
     }
-});
+}

@@ -2,11 +2,14 @@
     "name": "amphp/website-tools",
     "description": "Website tools for amphp.org.",
     "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
-        "amphp/amp": "^2.0",
-        "amphp/artax": "^3.0",
-        "kelunik/oauth-cli": "^1.0",
-        "kelunik/link-header-rfc5988": "^1.0"
+        "php": ">=8.1",
+        "amphp/amp": "^3",
+        "amphp/http-client": "^5",
+        "kelunik/oauth-cli": "^2",
+        "kelunik/link-header-rfc5988": "^1"
     },
     "license": "MIT",
     "authors": [
