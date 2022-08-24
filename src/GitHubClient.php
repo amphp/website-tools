@@ -7,7 +7,7 @@ use Amp\Http\Client\HttpClientBuilder;
 use Amp\Http\Client\Request;
 use function Kelunik\LinkHeaderRfc5988\parseLinks;
 
-class GitHubClient
+final class GitHubClient
 {
     private string $accessToken;
     private HttpClient $httpClient;
@@ -34,13 +34,31 @@ class GitHubClient
             $request
         );
 
-        $json = \json_decode($response->getBody()->buffer(), true);
+        $body = $response->getBody()->buffer();
+        $json = \json_decode($body, true);
 
         if ($response->getStatus() !== 200) {
             throw new \Exception("Request failed ($uri): " . $json["message"] . " (" . $json["documentation_url"] . ")");
         }
 
         return $json;
+    }
+
+    public function getReadme(string $repository, string $path = '/', ?string $ref = null): ?string
+    {
+        try {
+            $uri = "https://api.github.com/repos/{$repository}/readme/{$path}";
+
+            if ($ref !== null) {
+                $uri .= '?ref=' . \urlencode($ref);
+            }
+
+            $json = $this->get($uri);
+
+            return \base64_decode($json["content"]);
+        } catch (\Exception) {
+            return null;
+        }
     }
 
     public function getSubmoduleVersion(string $repository, string $path): ?string
@@ -92,10 +110,11 @@ class GitHubClient
 
         $response = $this->httpClient->request($request);
 
-        $json = \json_decode($response->getBody()->buffer(), true);
+        $body = $response->getBody()->buffer();
+        $json = \json_decode($body, true);
 
         if ((int)($response->getStatus() / 100) !== 2) {
-            throw new \Exception("Request failed (" . $response->getStatus() . "): " . $response->getBody()->buffer());
+            throw new \Exception("Request failed (" . $response->getStatus() . "): " . $body);
         }
 
         return $json;
@@ -132,10 +151,31 @@ class GitHubClient
 
         $response = $this->httpClient->request($request);
 
-        $json = \json_decode($response->getBody()->buffer(), true);
+        $body = $response->getBody()->buffer();
+        $json = \json_decode($body, true);
 
         if ((int)($response->getStatus() / 100) !== 2) {
-            throw new \Exception("Request failed (" . $response->getStatus() . "): " . $response->getBody()->buffer());
+            throw new \Exception("Request failed (" . $response->getStatus() . "): " . $body);
+        }
+
+        return $json;
+    }
+
+    public function put(string $uri, array $json): mixed
+    {
+        $body = json_encode($json);
+
+        $request = new Request($uri, 'PUT');
+        $request->setHeader("authorization", "token {$this->accessToken}");
+        $request->setBody($body);
+
+        $response = $this->httpClient->request($request);
+
+        $body = $response->getBody()->buffer();
+        $json = \json_decode($body, true);
+
+        if ((int)($response->getStatus() / 100) !== 2) {
+            throw new \Exception("Request failed (" . $response->getStatus() . "): " . $body);
         }
 
         return $json;
@@ -166,5 +206,36 @@ class GitHubClient
 
             $uri = ($link = $links->getByRel("next")) ? $link->getUri() : null;
         } while ($uri);
+    }
+
+    public function createFile(string $repository, string $branch, string $filePath, string $content, string $commitMessage, string $committerEmail, string $committerName)
+    {
+        $json = $this->put("https://api.github.com/repos/{$repository}/contents" . $filePath, [
+            'branch' => $branch,
+            "message" => $commitMessage,
+            "committer" => [
+                'name' => $committerName,
+                'email' => $committerEmail,
+            ],
+            'content' => \base64_encode($content),
+        ]);
+
+        return $json;
+    }
+
+    public function updateFile(string $repository, string $branch, string $sha, string $filePath, string $content, string $commitMessage, string $committerEmail, string $committerName)
+    {
+        $json = $this->put("https://api.github.com/repos/{$repository}/contents" . $filePath, [
+            'branch' => $branch,
+            'sha' => $sha,
+            "message" => $commitMessage,
+            "committer" => [
+                'name' => $committerName,
+                'email' => $committerEmail,
+            ],
+            'content' => \base64_encode($content),
+        ]);
+
+        return $json;
     }
 }

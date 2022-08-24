@@ -9,7 +9,8 @@
         "amphp/amp": "^3",
         "amphp/http-client": "^5",
         "kelunik/oauth-cli": "^2",
-        "kelunik/link-header-rfc5988": "^1"
+        "kelunik/link-header-rfc5988": "^1",
+        "symfony/yaml": "^6.1"
     },
     "license": "MIT",
     "authors": [
@@ -21,6 +22,9 @@
     "autoload": {
         "psr-4": {
             "Amp\\WebsiteTools\\": "src"
-        }
+        },
+        "files": [
+            "src/functions.php"
+        ]
     }
 }

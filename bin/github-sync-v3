@@ -1,0 +1,42 @@
+#!/usr/bin/env php
+<?php
+
+use Amp\Http\Client\HttpClientBuilder;
+use Amp\Http\Client\Interceptor\AddRequestHeader;
+use Amp\WebsiteTools\GitHubClient;
+use Kelunik\OAuth\Providers\GitHubProvider;
+use function Amp\ByteStream\getStdin;
+use function Amp\ByteStream\getStdout;
+use function Kelunik\OAuthCli\authenticate;
+
+require __DIR__ . "/../vendor/autoload.php";
+
+$stdin = getStdin();
+$stdout = getStdout();
+
+$httpClient = (new HttpClientBuilder)
+    ->intercept(new AddRequestHeader('user-agent', 'amphp/website-tools'))
+    ->build();
+
+$github = new GitHubProvider(
+    $httpClient,
+    "http://127.0.0.1:1337/oauth",
+    getenv("AMPHP_GITHUB_SYNC_APP_ID"),
+    getenv("AMPHP_GITHUB_SYNC_APP_SECRET"),
+    ["repo"]
+);
+
+$oauthToken = authenticate($github);
+
+$githubClient = new GitHubClient($oauthToken, $httpClient);
+
+$reference = $githubClient->getHead("amphp/v3.amphp.org", "main");
+
+$stdout->write("amphp/v3.amphp.org is at {$reference}\r\n");
+
+syncReadme(
+    $githubClient,
+    'amphp/amp@v3',
+    'Learn about futures and cancellations as fundamental primitives for asynchronous programming.',
+    'undraw/undraw_city_life.svg',
+);
