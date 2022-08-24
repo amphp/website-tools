@@ -18,15 +18,19 @@ $httpClient = (new HttpClientBuilder)
     ->intercept(new AddRequestHeader('user-agent', 'amphp/website-tools'))
     ->build();
 
-$github = new GitHubProvider(
-    $httpClient,
-    "http://127.0.0.1:1337/oauth",
-    getenv("AMPHP_GITHUB_SYNC_APP_ID"),
-    getenv("AMPHP_GITHUB_SYNC_APP_SECRET"),
-    ["repo"]
-);
+$oauthToken = getenv('AMPHP_GITHUB_SYNC_TOKEN');
+if (!$oauthToken) {
+    $github = new GitHubProvider(
+        $httpClient,
+        "http://127.0.0.1:1337/oauth",
+        getenv("AMPHP_GITHUB_SYNC_APP_ID"),
+        getenv("AMPHP_GITHUB_SYNC_APP_SECRET"),
+        ["repo"]
+    );
 
-$oauthToken = authenticate($github);
+    $oauthToken = authenticate($github);
+    print 'Set AMPHP_GITHUB_SYNC_TOKEN=' . $oauthToken . ' to avoid manual interaction in the future.' . PHP_EOL;
+}
 
 $githubClient = new GitHubClient($oauthToken, $httpClient);
 
