@@ -44,7 +44,7 @@ final class GitHubClient
         return $json;
     }
 
-    public function getReadme(string $repository, string $path = '/', ?string $ref = null): ?string
+    public function getReadme(string $repository, string $path = '/', ?string $ref = null): ?array
     {
         try {
             $uri = "https://api.github.com/repos/{$repository}/readme/{$path}";
@@ -55,7 +55,7 @@ final class GitHubClient
 
             $json = $this->get($uri);
 
-            return \base64_decode($json["content"]);
+            return [\base64_decode($json["content"]), $json['html_url']];
         } catch (\Exception) {
             return null;
         }

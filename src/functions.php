@@ -10,10 +10,12 @@ function syncReadme(GitHubClient $gitHubClient, string $source, string $descript
 
     $permalink = \substr($repository, \strpos($repository, '/'));
 
+    [$content, $htmlUrl] = $gitHubClient->getReadme($repository, '/', $reference);
+
     $docs = MarkdownConverter::convert(
-        $repository,
         $permalink,
-        $gitHubClient->getReadme($repository, '/', $reference),
+        $content,
+        $htmlUrl,
         $description,
         $imagePath
     );

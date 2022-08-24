@@ -6,7 +6,7 @@ use Symfony\Component\Yaml\Yaml;
 
 final class MarkdownConverter
 {
-    public static function convert(string $repository, string $permalink, string $markdown, string $description, string $imagePath): string
+    public static function convert(string $permalink, string $markdown, string $htmlUrl, string $description, string $imagePath): string
     {
         $title = null;
 
@@ -20,10 +20,12 @@ final class MarkdownConverter
         }
 
         $meta = [
+            'notice' => 'This file is imported and can be edited at ' . $htmlUrl,
             'title' => $title,
             'description' => $description,
             'image' => $imagePath,
             'permalink' => $permalink,
+            'source' => $htmlUrl,
             'layout' => 'docs',
         ];
 
