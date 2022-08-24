@@ -30,10 +30,10 @@ function syncReadme(GitHubClient $gitHubClient, string $source, string $descript
             print 'Skipping update of ' . $filePath . ', already up-to-date' . PHP_EOL;
         } else {
             print 'Updating ' . $filePath . PHP_EOL;
-            $gitHubClient->updateFile('amphp/v3.amphp.org', 'main', $fileSha, $filePath, $docs, 'Sync ' . $filePath, 'me@kelunik.com', 'Niklas Keller');
+            $gitHubClient->updateFile('amphp/v3.amphp.org', 'main', $fileSha, $filePath, $docs, 'Sync ' . ltrim($filePath, '/'), 'contact@amphp.org', 'AMPHP Bot');
         }
     } catch (\Exception) {
         print 'Creating ' . $filePath . PHP_EOL;
-        $gitHubClient->createFile('amphp/v3.amphp.org', 'main', $filePath, $docs, 'Sync ' . $filePath, 'me@kelunik.com', 'Niklas Keller');
+        $gitHubClient->createFile('amphp/v3.amphp.org', 'main', $filePath, $docs, 'Sync ' . ltrim($filePath, '/'), 'contact@amphp.org', 'AMPHP Bot');
     }
 }
