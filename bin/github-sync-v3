@@ -44,3 +44,10 @@ syncReadme(
     'Learn about futures and cancellations as fundamental primitives for asynchronous programming.',
     'undraw/undraw_city_life.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/byte-stream@v2',
+    'Learn about stream abstractions for ordered sequences of bytes.',
+    'undraw/undraw_developer_activity.svg',
+);
