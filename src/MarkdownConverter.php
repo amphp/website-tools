@@ -19,6 +19,9 @@ final class MarkdownConverter
             throw new \Exception('Missing title');
         }
 
+        $markdown = \str_replace('> **Note**', '{:.note}', $markdown);
+        $markdown = \str_replace('> **Warning**', '{:.warning}', $markdown);
+
         $meta = [
             'notice' => 'This file is imported and can be edited at ' . $htmlUrl,
             'title' => $title,
