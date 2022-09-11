@@ -51,3 +51,10 @@ syncReadme(
     'Learn about stream abstractions for ordered sequences of bytes.',
     'undraw/undraw_developer_activity.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/sync@v2',
+    'Learn about synchronization primitives to organize concurrency.',
+    'undraw/undraw_developer_activity.svg',
+);
