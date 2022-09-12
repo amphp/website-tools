@@ -58,3 +58,10 @@ syncReadme(
     'Learn about synchronization primitives to organize concurrency.',
     'undraw/undraw_developer_activity.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/cache@v2',
+    'Learn about the Cache interface to serve data faster.',
+    'undraw/undraw_memory_storage.svg',
+);
