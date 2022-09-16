@@ -65,3 +65,10 @@ syncReadme(
     'Learn about the Cache interface to serve data faster.',
     'undraw/undraw_memory_storage.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/dns@v2',
+    'Learn how to resolve hostnames to IP addresses and query the domain name system.',
+    'undraw/undraw_searching.svg',
+);
