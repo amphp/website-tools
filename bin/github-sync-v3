@@ -72,3 +72,10 @@ syncReadme(
     'Learn how to resolve hostnames to IP addresses and query the domain name system.',
     'undraw/undraw_searching.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/file@v3',
+    'Learn how to read and write files without blocking.',
+    'undraw/undraw_my_files.svg',
+);
