@@ -86,3 +86,10 @@ syncReadme(
     'Learn how to connect to servers and serve connections yourself.',
     'undraw/undraw_coffee.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/windows-registry@v1',
+    'Learn how to read values from the Windows Registry.',
+    'undraw/undraw_welcome.svg',
+);
