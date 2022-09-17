@@ -79,3 +79,10 @@ syncReadme(
     'Learn how to read and write files without blocking.',
     'undraw/undraw_my_files.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/socket@v2',
+    'Learn how to connect to servers and serve connections yourself.',
+    'undraw/undraw_coffee.svg',
+);
