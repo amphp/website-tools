@@ -93,3 +93,10 @@ syncReadme(
     'Learn how to read values from the Windows Registry.',
     'undraw/undraw_welcome.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/log@v2',
+    'Learn how to write logs for your application in a non-blocking way.',
+    'undraw/undraw_diary.svg',
+);
