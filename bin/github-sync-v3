@@ -100,3 +100,10 @@ syncReadme(
     'Learn how to write logs for your application in a non-blocking way.',
     'undraw/undraw_diary.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/parser@master',
+    'Learn how to write streaming generator parsers in PHP.',
+    'undraw/undraw_reading_time.svg',
+);
