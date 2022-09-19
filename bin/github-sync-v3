@@ -107,3 +107,10 @@ syncReadme(
     'Learn how to write streaming generator parsers in PHP.',
     'undraw/undraw_reading_time.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/phpunit-util@v3',
+    'Learn how to write tests with PHPUnit while making use of timeouts and minimum runtimes.',
+    'undraw/undraw_qa_engineers.svg',
+);
