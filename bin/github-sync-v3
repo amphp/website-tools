@@ -114,3 +114,10 @@ syncReadme(
     'Learn how to write tests with PHPUnit while making use of timeouts and minimum runtimes.',
     'undraw/undraw_qa_engineers.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/mysql@v3',
+    'Learn how to query and update data in MySQL databases.',
+    'undraw/undraw_fishing.svg',
+);
