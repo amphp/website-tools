@@ -121,3 +121,10 @@ syncReadme(
     'Learn how to query and update data in MySQL databases.',
     'undraw/undraw_fishing.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/process@v2',
+    'Learn how to run child processes, stream data, and collect their exit codes.',
+    'undraw/undraw_fatherhood.svg',
+);
