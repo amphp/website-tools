@@ -128,3 +128,10 @@ syncReadme(
     'Learn how to run child processes, stream data, and collect their exit codes.',
     'undraw/undraw_fatherhood.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/serialization@master',
+    'Learn how to serialize data for IPC and data storage in PHP.',
+    'undraw/undraw_drone_delivery.svg',
+);
