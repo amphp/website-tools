@@ -135,3 +135,10 @@ syncReadme(
     'Learn how to serialize data for IPC and data storage in PHP.',
     'undraw/undraw_drone_delivery.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/parallel@v2',
+    'Learn how to do true parallel processing in PHP using multiple processes or native threads, without blocking and no extensions required.',
+    'undraw/undraw_logistics.svg',
+);
