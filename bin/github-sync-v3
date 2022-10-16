@@ -142,3 +142,10 @@ syncReadme(
     'Learn how to do true parallel processing in PHP using multiple processes or native threads, without blocking and no extensions required.',
     'undraw/undraw_logistics.svg',
 );
+
+syncReadme(
+    $githubClient,
+    'amphp/http-client@v5',
+    'Learn how to do standards-compliant HTTP resource traversal and RESTful web service consumption.',
+    'undraw/undraw_logistics.svg',
+);
