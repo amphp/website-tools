@@ -40,7 +40,7 @@ $stdout->write("amphp/v3.amphp.org is at {$reference}\r\n");
 
 syncReadme(
     $githubClient,
-    'amphp/amp@v3',
+    'amphp/amp@3.x',
     'Learn about futures and cancellations as fundamental primitives for asynchronous programming.',
     'undraw/undraw_city_life.svg',
 );
@@ -54,7 +54,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/sync@v2',
+    'amphp/sync@2.x',
     'Learn about synchronization primitives to organize concurrency.',
     'undraw/undraw_developer_activity.svg',
 );
@@ -110,7 +110,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/phpunit-util@v3',
+    'amphp/phpunit-util@3.x',
     'Learn how to write tests with PHPUnit while making use of timeouts and minimum runtimes.',
     'undraw/undraw_qa_engineers.svg',
 );
@@ -147,5 +147,12 @@ syncReadme(
     $githubClient,
     'amphp/http-client@v5',
     'Learn how to do standards-compliant HTTP resource traversal and RESTful web service consumption.',
+    'undraw/undraw_logistics.svg',
+);
+
+syncReadme(
+    $githubClient,
+    'amphp/pipeline@1.x',
+    'Learn how to do create and consume asynchronous sets.',
     'undraw/undraw_logistics.svg',
 );
