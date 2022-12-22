@@ -12,6 +12,10 @@ function syncReadme(GitHubClient $gitHubClient, string $source, string $descript
 
     [$content, $htmlUrl] = $gitHubClient->getReadme($repository, '/', $reference);
 
+    if ($content === null) {
+        throw new \Exception("Reference '$reference' not found in '$repository' repository");
+    }
+
     $docs = MarkdownConverter::convert(
         $permalink,
         $content,
