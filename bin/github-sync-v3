@@ -36,7 +36,7 @@ $githubClient = new GitHubClient($oauthToken, $httpClient);
 
 $reference = $githubClient->getHead("amphp/v3.amphp.org", "main");
 
-$stdout->write("amphp/v3.amphp.org is at {$reference}\r\n");
+$stdout->write("amphp/amphp.org is at {$reference}\r\n");
 
 syncReadme(
     $githubClient,
@@ -47,7 +47,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/byte-stream@v2',
+    'amphp/byte-stream@2.x',
     'Learn about stream abstractions for ordered sequences of bytes.',
     'undraw/undraw_developer_activity.svg',
 );
@@ -68,7 +68,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/dns@v2',
+    'amphp/dns@2.x',
     'Learn how to resolve hostnames to IP addresses and query the domain name system.',
     'undraw/undraw_searching.svg',
 );
@@ -89,7 +89,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/windows-registry@v1',
+    'amphp/windows-registry@1.x',
     'Learn how to read values from the Windows Registry.',
     'undraw/undraw_welcome.svg',
 );
@@ -103,7 +103,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/parser@master',
+    'amphp/parser@1.x',
     'Learn how to write streaming generator parsers in PHP.',
     'undraw/undraw_reading_time.svg',
 );
@@ -124,7 +124,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/process@v2',
+    'amphp/process@2.x',
     'Learn how to run child processes, stream data, and collect their exit codes.',
     'undraw/undraw_fatherhood.svg',
 );

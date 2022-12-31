@@ -27,17 +27,17 @@ function syncReadme(GitHubClient $gitHubClient, string $source, string $descript
     $filePath = $permalink . '.md';
 
     try {
-        $file = $gitHubClient->get('https://api.github.com/repos/amphp/v3.amphp.org/contents' . $filePath . '?ref=main');
+        $file = $gitHubClient->get('https://api.github.com/repos/amphp/amphp.org/contents' . $filePath . '?ref=main');
         $fileSha = $file['sha'];
 
         if (\base64_decode($file["content"]) === $docs) {
             print 'Skipping update of ' . $filePath . ', already up-to-date' . PHP_EOL;
         } else {
             print 'Updating ' . $filePath . PHP_EOL;
-            $gitHubClient->updateFile('amphp/v3.amphp.org', 'main', $fileSha, $filePath, $docs, 'Sync ' . ltrim($filePath, '/'), 'contact@amphp.org', 'AMPHP Bot');
+            $gitHubClient->updateFile('amphp/amphp.org', 'main', $fileSha, $filePath, $docs, 'Sync ' . ltrim($filePath, '/'), 'contact@amphp.org', 'AMPHP Bot');
         }
     } catch (\Exception) {
         print 'Creating ' . $filePath . PHP_EOL;
-        $gitHubClient->createFile('amphp/v3.amphp.org', 'main', $filePath, $docs, 'Sync ' . ltrim($filePath, '/'), 'contact@amphp.org', 'AMPHP Bot');
+        $gitHubClient->createFile('amphp/amphp.org', 'main', $filePath, $docs, 'Sync ' . ltrim($filePath, '/'), 'contact@amphp.org', 'AMPHP Bot');
     }
 }
