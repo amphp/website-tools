@@ -72,6 +72,11 @@ final class GitHubClient
         }
     }
 
+    public function getLatestRelease(string $repository)
+    {
+        return $this->get("https://api.github.com/repos/{$repository}/releases/latest");
+    }
+
     public function getCommitTree($repository, $sha)
     {
         $json = $this->get("https://api.github.com/repos/{$repository}/git/commits/{$sha}");

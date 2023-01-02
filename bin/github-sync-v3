@@ -82,7 +82,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/socket@v2',
+    'amphp/socket@2.x',
     'Learn how to connect to servers and serve connections yourself.',
     'undraw/undraw_coffee.svg',
 );
@@ -138,7 +138,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/parallel@v2',
+    'amphp/parallel@2.x',
     'Learn how to do true parallel processing in PHP using multiple processes or native threads, without blocking and no extensions required.',
     'undraw/undraw_logistics.svg',
 );
@@ -156,3 +156,5 @@ syncReadme(
     'Learn how to do create and consume asynchronous sets.',
     'undraw/undraw_logistics.svg',
 );
+
+syncReleases($githubClient);

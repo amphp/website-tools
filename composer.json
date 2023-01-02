@@ -10,7 +10,8 @@
         "amphp/http-client": "^5",
         "kelunik/oauth-cli": "^2",
         "kelunik/link-header-rfc5988": "^1",
-        "symfony/yaml": "^6.1"
+        "symfony/yaml": "^6.1",
+        "p3k/emoji-detector": "^1.0"
     },
     "license": "MIT",
     "authors": [
