@@ -108,7 +108,7 @@ function syncReleases(GitHubClient $gitHubClient): void
             'html_url' => $latestRelease['html_url'],
             'date' => $latestRelease['published_at'],
             'body' => replaceEmojis($latestRelease['body']),
-            'revolt' => $v3,
+            'revolt' => $v3 || in_array($repositoryName, ['amphp/parser', 'amphp/http', 'amphp/hpack', 'amphp/serialization', 'amphp/php-cs-fixer-config'], true),
         ];
     }
 
