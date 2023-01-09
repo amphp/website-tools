@@ -61,7 +61,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/cache@v2',
+    'amphp/cache@2.x',
     'Learn about the Cache interface to serve data faster.',
     'undraw/undraw_memory_storage.svg',
 );
