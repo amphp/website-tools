@@ -145,6 +145,13 @@ syncReadme(
 
 syncReadme(
     $githubClient,
+    'amphp/http@2.x',
+    'Learn how to use our standards-compliant collection of basic HTTP primitives which can be shared by servers and clients.',
+    'undraw/undraw_logistics.svg',
+);
+
+syncReadme(
+    $githubClient,
     'amphp/http-client@v5',
     'Learn how to do standards-compliant HTTP resource traversal and RESTful web service consumption.',
     'undraw/undraw_logistics.svg',
