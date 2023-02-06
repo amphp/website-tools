@@ -131,7 +131,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/serialization@master',
+    'amphp/serialization@1.x',
     'Learn how to serialize data for IPC and data storage in PHP.',
     'undraw/undraw_drone_delivery.svg',
 );
