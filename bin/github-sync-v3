@@ -96,7 +96,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/log@v2',
+    'amphp/log@2.x',
     'Learn how to write logs for your application in a non-blocking way.',
     'undraw/undraw_diary.svg',
 );
