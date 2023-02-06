@@ -152,7 +152,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/http-client@v5',
+    'amphp/http-client@5.x',
     'Learn how to do standards-compliant HTTP resource traversal and RESTful web service consumption.',
     'undraw/undraw_logistics.svg',
 );
