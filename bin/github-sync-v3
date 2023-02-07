@@ -164,4 +164,11 @@ syncReadme(
     'undraw/undraw_logistics.svg',
 );
 
+syncReadme(
+    $githubClient,
+    'amphp/react-adapter@master',
+    'Learn how to use any ReactPHP library and make it compatible with Amp.',
+    'undraw/undraw_logistics.svg',
+);
+
 syncReleases($githubClient);
