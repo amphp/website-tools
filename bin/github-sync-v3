@@ -75,7 +75,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/file@v3',
+    'amphp/file@3.x',
     'Learn how to read and write files without blocking.',
     'undraw/undraw_my_files.svg',
 );
