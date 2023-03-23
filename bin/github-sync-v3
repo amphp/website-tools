@@ -41,48 +41,55 @@ $stdout->write("amphp/amphp.org is at {$reference}\r\n");
 syncReadme(
     $githubClient,
     'amphp/amp@3.x',
-    'Learn about futures and cancellations as fundamental primitives for asynchronous programming.',
+    'Coroutines, Futures, and Cancellations in PHP',
+    'Get started with asynchronous PHP by learning how to use the fundamental primitives.',
     'undraw/undraw_city_life.svg',
 );
 
 syncReadme(
     $githubClient,
     'amphp/byte-stream@2.x',
-    'Learn about stream abstractions for ordered sequences of bytes.',
+    'Non-blocking I/O Streams in PHP',
+    'Learn how to stream data (ordered sequences of bytes) concurrently in PHP.',
     'undraw/undraw_developer_activity.svg',
 );
 
 syncReadme(
     $githubClient,
     'amphp/sync@2.x',
-    'Learn about synchronization primitives to organize concurrency.',
+    'Synchronize Concurrent Execution in PHP',
+    'Learn how to use synchronization primitives to organize concurrency.',
     'undraw/undraw_developer_activity.svg',
 );
 
 syncReadme(
     $githubClient,
     'amphp/cache@2.x',
-    'Learn about the Cache interface to serve data faster.',
+    'Cache Data in Concurrent PHP Applications',
+    'Learn how to cache data to serve requests faster in a concurrency safe way.',
     'undraw/undraw_memory_storage.svg',
 );
 
 syncReadme(
     $githubClient,
     'amphp/dns@2.x',
-    'Learn how to resolve hostnames to IP addresses and query the domain name system.',
+    'Non-blocking DNS Hostname Resolution and Queries in PHP',
+    'Learn how to resolve hostnames to IP addresses and query records the domain name system.',
     'undraw/undraw_searching.svg',
 );
 
 syncReadme(
     $githubClient,
     'amphp/file@3.x',
-    'Learn how to read and write files without blocking.',
+    'Non-blocking Filesystem Access in PHP',
+    'Learn how to read and write files without blocking the event loop.',
     'undraw/undraw_my_files.svg',
 );
 
 syncReadme(
     $githubClient,
     'amphp/socket@2.x',
+    'Non-blocking TCP Servers and Clients in PHP',
     'Learn how to connect to servers and serve connections yourself.',
     'undraw/undraw_coffee.svg',
 );
@@ -90,6 +97,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/windows-registry@1.x',
+    'Non-blocking Windows Registry Access in PHP',
     'Learn how to read values from the Windows Registry.',
     'undraw/undraw_welcome.svg',
 );
@@ -97,6 +105,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/log@2.x',
+    'Non-blocking Logging in PHP',
     'Learn how to write logs for your application in a non-blocking way.',
     'undraw/undraw_diary.svg',
 );
@@ -104,6 +113,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/parser@1.x',
+    'Writing Parsers in PHP',
     'Learn how to write streaming generator parsers in PHP.',
     'undraw/undraw_reading_time.svg',
 );
@@ -111,6 +121,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/phpunit-util@3.x',
+    'Simplify PHPUnit Tests Involving Asynchronous Behavior',
     'Learn how to write tests with PHPUnit while making use of timeouts and minimum runtimes.',
     'undraw/undraw_qa_engineers.svg',
 );
@@ -118,6 +129,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/mysql@v3',
+    'MySQL Connection Pool in PHP',
     'Learn how to query and update data in MySQL databases.',
     'undraw/undraw_fishing.svg',
 );
@@ -125,6 +137,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/process@2.x',
+    'Non-blocking Child Processes in PHP',
     'Learn how to run child processes, stream data, and collect their exit codes.',
     'undraw/undraw_fatherhood.svg',
 );
@@ -132,6 +145,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/serialization@1.x',
+    'Serialization in PHP',
     'Learn how to serialize data for IPC and data storage in PHP.',
     'undraw/undraw_drone_delivery.svg',
 );
@@ -139,6 +153,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/parallel@2.x',
+    'Parallel Processing in PHP',
     'Learn how to do true parallel processing in PHP using multiple processes or native threads, without blocking and no extensions required.',
     'undraw/undraw_logistics.svg',
 );
@@ -146,6 +161,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/http@2.x',
+    'HTTP in PHP',
     'Learn how to use our standards-compliant collection of basic HTTP primitives which can be shared by servers and clients.',
     'undraw/undraw_logistics.svg',
 );
@@ -153,6 +169,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/http-client@5.x',
+    'Non-blocking HTTP Client in PHP',
     'Learn how to do standards-compliant HTTP resource traversal and RESTful web service consumption.',
     'undraw/undraw_logistics.svg',
 );
@@ -160,6 +177,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/pipeline@1.x',
+    'Concurrent Datasets in PHP',
     'Learn how to do create and consume asynchronous sets.',
     'undraw/undraw_logistics.svg',
 );
@@ -167,6 +185,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/react-adapter@master',
+    'ReactPHP Compatibility',
     'Learn how to use any ReactPHP library and make it compatible with Amp.',
     'undraw/undraw_logistics.svg',
 );

@@ -6,7 +6,7 @@ use Amp\WebsiteTools\GitHubClient;
 use Amp\WebsiteTools\MarkdownConverter;
 use function Emoji\detect_emoji;
 
-function syncReadme(GitHubClient $gitHubClient, string $source, string $description, string $imagePath): void
+function syncReadme(GitHubClient $gitHubClient, string $source, string $title, string $description, string $imagePath): void
 {
     $repository = explode('@', $source)[0];
     $reference = explode('@', $source)[1];
@@ -23,6 +23,7 @@ function syncReadme(GitHubClient $gitHubClient, string $source, string $descript
         $permalink,
         $content,
         $htmlUrl,
+        $title,
         $description,
         $imagePath
     );
