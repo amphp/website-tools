@@ -79,7 +79,7 @@ syncReadme(
 );
 
 syncReadme(
-my    $githubClient,
+    $githubClient,
     'amphp/file@3.x',
     'Non-blocking Filesystem Access in PHP',
     'Learn how to read and write files without blocking the event loop.',
