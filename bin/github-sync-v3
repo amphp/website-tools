@@ -79,7 +79,7 @@ syncReadme(
 );
 
 syncReadme(
-    $githubClient,
+my    $githubClient,
     'amphp/file@3.x',
     'Non-blocking Filesystem Access in PHP',
     'Learn how to read and write files without blocking the event loop.',
@@ -128,7 +128,7 @@ syncReadme(
 
 syncReadme(
     $githubClient,
-    'amphp/mysql@v3',
+    'amphp/mysql@3.x',
     'MySQL Connection Pool in PHP',
     'Learn how to query and update data in MySQL databases.',
     'undraw/undraw_fishing.svg',
