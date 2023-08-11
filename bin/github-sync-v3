@@ -176,6 +176,14 @@ syncReadme(
 
 syncReadme(
     $githubClient,
+    'amphp/http-server@3.x',
+    'A non-blocking HTTP application server for PHP based on Revolt.',
+    'Learn how to build non-blocking, concurrent HTTP/1.1 and HTTP/2 server applications in PHP based on Revolt.',
+    'undraw/undraw_logistics.svg',
+);
+
+syncReadme(
+    $githubClient,
     'amphp/pipeline@1.x',
     'Concurrent Datasets in PHP',
     'Learn how to do create and consume asynchronous sets.',
