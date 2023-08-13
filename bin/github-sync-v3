@@ -177,8 +177,16 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/http-server@3.x',
-    'A non-blocking HTTP application server for PHP based on Revolt.',
+    'HTTP server applications in PHP based on Revolt',
     'Learn how to build non-blocking, concurrent HTTP/1.1 and HTTP/2 server applications in PHP based on Revolt.',
+    'undraw/undraw_logistics.svg',
+);
+
+syncReadme(
+    $githubClient,
+    'amphp/http-server-router@2.x',
+    'Routing for HTTP servers in PHP',
+    'Learn how to route to different HTTP server RequestHandler instances based on the request path and method using FastRoute.',
     'undraw/undraw_logistics.svg',
 );
 
