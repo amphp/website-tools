@@ -64,6 +64,14 @@ syncReadme(
 
 syncReadme(
     $githubClient,
+    'amphp/redis@2.x',
+    'Communicate with Redis Servers',
+    'Learn how to efficiently communicate with Redis servers, enabling scalable and responsive data storage and retrieval.',
+    'undraw/undraw_searching.svg',
+);
+
+syncReadme(
+    $githubClient,
     'amphp/cache@2.x',
     'Cache Data in Concurrent PHP Applications',
     'Learn how to cache data to serve requests faster in a concurrency safe way.',
