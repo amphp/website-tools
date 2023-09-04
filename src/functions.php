@@ -118,7 +118,7 @@ function syncReleases(GitHubClient $gitHubClient): void
     usort($latestReleases, static fn ($a, $b) => DateTimeImmutable::createFromFormat('Y-m-d\TH:i:sP', $b['date']) <=> DateTimeImmutable::createFromFormat('Y-m-d\TH:i:sP', $a['date']));
 
     $filePath = '/_data/releases.json';
-    $json = json_encode($latestReleases);
+    $json = json_encode($latestReleases, JSON_PRETTY_PRINT);
 
     try {
         $file = $gitHubClient->get('https://api.github.com/repos/amphp/amphp.org/contents' . $filePath . '?ref=main');
