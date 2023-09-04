@@ -95,7 +95,8 @@ function syncReleases(GitHubClient $gitHubClient): void
         $composerUrl = "https://raw.githubusercontent.com/$repositoryName/" . $latestRelease['tag_name'] . "/composer.json";
         $composerBody = $httpClient->request(new Request($composerUrl))->getBody()->buffer();
 
-        $v3 = $repositoryName === 'amphp/http' && !str_contains($latestRelease['tag_name'], 'v1.')
+        $v3 = $repositoryName === 'amphp/hpack'
+            || $repositoryName === 'amphp/http' && !str_contains($latestRelease['tag_name'], 'v1.')
             || str_contains($composerBody, 'revolt/event-loop')
             || str_contains($composerBody, 'amphp/amp": "^3')
             || str_contains($composerBody, 'amphp/byte-stream": "^2')
