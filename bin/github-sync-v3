@@ -200,6 +200,14 @@ syncReadme(
 
 syncReadme(
     $githubClient,
+    'amphp/http-server-session@3.x',
+    'Session Handling for HTTP servers in PHP',
+    'Learn how to handle user sessions, securely managing data across requests.',
+    'undraw/undraw_logistics.svg',
+);
+
+syncReadme(
+    $githubClient,
     'amphp/http-server-static-content@2.x',
     'Static File Serving',
     'Learn how to serve static files with Amp\'s HTTP server.',
