@@ -169,48 +169,6 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/http@2.x',
-    'Learn how to use common HTTP components shared between servers and clients.',
-    'undraw/undraw_growing.svg',
-);
-
-syncReadme(
-    $githubClient,
-    'amphp/http-server@3.x',
-    'Learn how to create an HTTP server.',
-    'undraw/undraw_server_cluster.svg',
-);
-
-syncReadme(
-    $githubClient,
-    'amphp/http-server-router@2.x',
-    'Learn how to create an HTTP server request handler based on path router.',
-    'undraw/undraw_server_cluster.svg',
-);
-
-syncReadme(
-    $githubClient,
-    'amphp/http-server-static-content@2.x',
-    'Learn how to create an HTTP server request handler to serve static content.',
-    'undraw/undraw_server_cluster.svg',
-);
-
-syncReadme(
-    $githubClient,
-    'amphp/http-server-form-parser@2.x',
-    'Learn how to parse x-www-form-urlencoded or multipart/form-data data submitted to an HTTP server request handler.',
-    'undraw/undraw_server_cluster.svg',
-);
-
-syncReadme(
-    $githubClient,
-    'amphp/http-server-session@3.x',
-    'Learn how to create and store session data in the HTTP server.',
-    'undraw/undraw_server_cluster.svg',
-);
-
-syncReadme(
-    $githubClient,
-    'amphp/http@2.x',
     'HTTP in PHP',
     'Learn how to use our standards-compliant collection of basic HTTP primitives which can be shared by servers and clients.',
     'undraw/undraw_logistics.svg',
@@ -230,6 +188,14 @@ syncReadme(
     'HTTP server applications in PHP based on Revolt',
     'Learn how to build non-blocking, concurrent HTTP/1.1 and HTTP/2 server applications in PHP based on Revolt.',
     'undraw/undraw_logistics.svg',
+);
+
+syncReadme(
+    $githubClient,
+    'amphp/http-server-form-parser@2.x',
+    'HTTP Multipart Form Parsing',
+    'Learn how to parse x-www-form-urlencoded or multipart/form-data data submitted to an HTTP server request handler.',
+    'undraw/undraw_server_cluster.svg',
 );
 
 syncReadme(
@@ -258,6 +224,15 @@ syncReadme(
 
 syncReadme(
     $githubClient,
+    'amphp/http-server-session@3.x',
+    'HTTP Server Sessions',
+    'Learn how to create and store session data in the HTTP server.',
+    'undraw/undraw_server_cluster.svg',
+);
+
+
+syncReadme(
+    $githubClient,
     'amphp/pipeline@1.x',
     'Concurrent Datasets in PHP',
     'Learn how to create and consume asynchronous sets.',
@@ -275,6 +250,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/websocket-client@2.x',
+    'PHP WebSocket Client',
     'Learn how to create WebSocket client connections.',
     'undraw/undraw_coffee.svg',
 );
@@ -282,6 +258,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/websocket-server@4.x',
+    'PHP WebSocket Server',
     'Learn how to create WebSocket servers.',
     'undraw/undraw_drone_delivery.svg',
 );
@@ -289,6 +266,7 @@ syncReadme(
 syncReadme(
     $githubClient,
     'amphp/cluster@2.x',
+    'Tools for server clusters in PHP',
     'Learn how to create multiprocess server clusters.',
     'undraw/undraw_server_cluster.svg',
 );
