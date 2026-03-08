@@ -144,6 +144,14 @@ syncReadme(
 
 syncReadme(
     $githubClient,
+    'amphp/postgres@2.x',
+    'Postgres Connection Pool in PHP',
+    'Learn how to query and update data in Postgres databases.',
+    'undraw/undraw_fishing.svg',
+);
+
+syncReadme(
+    $githubClient,
     'amphp/process@2.x',
     'Non-blocking Child Processes in PHP',
     'Learn how to run child processes, stream data, and collect their exit codes.',
